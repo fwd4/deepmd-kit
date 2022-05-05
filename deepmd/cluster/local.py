@@ -31,7 +31,10 @@ def get_gpus():
             decoded = stderr.decode('UTF-8')
             raise RuntimeError('Failed to detect availbe GPUs due to:\n%s' % decoded)
         decoded = stdout.decode('UTF-8').strip()
-        num_gpus = int(decoded)
+        try:
+            num_gpus = int(decoded)
+        except: 
+            num_gpus = int(decoded.split("\n")[-1])
         return list(range(num_gpus)) if num_gpus > 0 else None
 
 
