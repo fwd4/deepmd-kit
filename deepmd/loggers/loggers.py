@@ -189,7 +189,7 @@ def set_log_handles(
         os.environ["KMP_WARNINGS"] = "FALSE"
 
     # set TF cpp internal logging level
-    os.environ['TF_CPP_MIN_LOG_LEVEL'] = str(int((level / 10) - 1))
+    #os.environ['TF_CPP_MIN_LOG_LEVEL'] = str(int((level / 10) - 1))
 
     # get root logger
     root_log = logging.getLogger()

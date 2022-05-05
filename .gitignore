@@ -35,3 +35,4 @@ build_lammps/
 .idea/
 build_tests/
 build_cc_tests
+examples/water/se_e2_a/

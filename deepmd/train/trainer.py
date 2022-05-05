@@ -491,9 +491,11 @@ class DPTrainer (object):
             tfv2.profiler.experimental.start(self.tensorboard_log_dir)
         
         train_time = 0
+        import disc_dcu
+        disc_handler = disc_dcu.DiscHandler(disc_dcu.OptLevel.O1, limit=30, degree=[30, 100, 100])
 
         while cur_batch < stop_batch :
-
+          with disc_handler:
             # first round validation:
             train_batch = train_data.get_batch()
             if self.display_in_training and is_first_step:
