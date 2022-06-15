@@ -7,6 +7,9 @@ file(GLOB INC_SRC include/*.h ${CMAKE_CURRENT_BINARY_DIR}/version.h)
 add_library(${libname} SHARED ${LIB_SRC})
 target_include_directories(${libname} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
+
+set(TAO_BRIDGE /home/fl237079/workspace/tao_built/libtao_ops.so)
+
 if (USE_CUDA_TOOLKIT)
   add_definitions("-DGOOGLE_CUDA")
   add_subdirectory(src/cuda)
@@ -20,7 +23,10 @@ if (USE_ROCM_TOOLKIT)
   add_definitions("-DTENSORFLOW_USE_ROCM")
   add_subdirectory(src/rocm)
   set (EXTRA_LIBS ${EXTRA_LIBS} deepmd_op_rocm)
-  target_link_libraries (${libname} INTERFACE ${ROCM_LIBRARIES} ${EXTRA_LIBS})
+  message("${libname}")
+  message("${TAO_BRIDGE}")
+  target_link_libraries (${libname} INTERFACE ${ROCM_LIBRARIES} ${EXTRA_LIBS} ${TAO_BRIDGE})
+  target_link_libraries (${libname} PUBLIC ${TAO_BRIDGE})
   # gpu_rocm.h
   target_include_directories(${libname} PUBLIC ${ROCM_INCLUDE_DIRS})
 endif()

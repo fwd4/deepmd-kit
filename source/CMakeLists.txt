@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 3.7)
 project(DeePMD)
+cmake_policy(SET CMP0074 NEW)
 if (CMAKE_COMPILER_IS_GNUCXX)
   set(CMAKE_LINK_WHAT_YOU_USE TRUE)
 endif ()

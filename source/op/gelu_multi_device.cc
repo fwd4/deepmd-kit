@@ -1,7 +1,7 @@
 #include "custom_op.h"
 #include "gelu.h"
 
-REGISTER_OP("Gelu")
+/*REGISTER_OP("Gelu")
     .Attr("T: {float, double} = DT_DOUBLE")
     .Input("x: T")
     .Output("output: T");
@@ -10,7 +10,7 @@ REGISTER_OP("GeluGrad")
     .Attr("T: {float, double} = DT_DOUBLE")
     .Input("dy: T")
     .Input("x: T")
-    .Output("output: T");
+    .Output("output: T");*/
 
 REGISTER_OP("GeluGradGrad")
     .Attr("T: {float, double} = DT_DOUBLE")
