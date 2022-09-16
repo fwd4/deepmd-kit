@@ -19,7 +19,7 @@ endif()
 if (USE_ROCM_TOOLKIT)
   add_definitions("-DTENSORFLOW_USE_ROCM")
   add_subdirectory(src/rocm)
-  set (EXTRA_LIBS ${EXTRA_LIBS} deepmd_op_rocm)
+  set (EXTRA_LIBS ${EXTRA_LIBS} deepmd_op_rocm tao_ops)
   target_link_libraries (${libname} INTERFACE ${ROCM_LIBRARIES} ${EXTRA_LIBS})
   # gpu_rocm.h
   target_include_directories(${libname} PUBLIC ${ROCM_INCLUDE_DIRS})

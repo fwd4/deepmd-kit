@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.7)
 project(DeePMD)
 
+cmake_policy(SET CMP0074 NEW)
 # build cpp or python interfaces
 if (NOT DEFINED BUILD_CPP_IF) 
   set(BUILD_CPP_IF TRUE)
@@ -142,6 +143,8 @@ else ()
   message (STATUS "Set GLIBCXX_USE_CXX_ABI=1 when compiling ops")
 endif ()
 
+add_compile_options(-D_GLIBCXX_USE_CXX11_ABI=${OP_CXX_ABI})
+add_link_options(-Wl,--no-as-needed)
 # define USE_TTM
 if (NOT DEFINED USE_TTM)
   set(USE_TTM FALSE)

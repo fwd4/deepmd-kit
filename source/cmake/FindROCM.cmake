@@ -10,10 +10,10 @@
 list(APPEND ROCM_search_PATHS ${ROCM_ROOT})
 list(APPEND ROCM_search_PATHS "/opt/rocm/")
 
-# define the libs to find
-if (NOT ROCM_FIND_COMPONENTS)
-  set(ROCM_FIND_COMPONENTS hip_hcc hiprtc)
-endif ()
+# # define the libs to find
+# if (NOT ROCM_FIND_COMPONENTS)
+#   set(ROCM_FIND_COMPONENTS hip_hcc hiprtc)
+# endif ()
 
 # includes
 find_path (ROCM_INCLUDE_DIRS

@@ -1,23 +1,23 @@
 #include "custom_op.h"
 #include "gelu.h"
 
-REGISTER_OP("Gelu")
-    .Attr("T: {float, double} = DT_DOUBLE")
-    .Input("x: T")
-    .Output("output: T");
-
-REGISTER_OP("GeluGrad")
-    .Attr("T: {float, double} = DT_DOUBLE")
-    .Input("dy: T")
-    .Input("x: T")
-    .Output("output: T");
-
-REGISTER_OP("GeluGradGrad")
-    .Attr("T: {float, double} = DT_DOUBLE")
-    .Input("dy: T")
-    .Input("dy_: T")
-    .Input("x: T")
-    .Output("output: T");
+// REGISTER_OP("Gelu")
+//     .Attr("T: {float, double} = DT_DOUBLE")
+//     .Input("x: T")
+//     .Output("output: T");
+// 
+// REGISTER_OP("GeluGrad")
+//     .Attr("T: {float, double} = DT_DOUBLE")
+//     .Input("dy: T")
+//     .Input("x: T")
+//     .Output("output: T");
+// 
+// REGISTER_OP("GeluGradGrad")
+//     .Attr("T: {float, double} = DT_DOUBLE")
+//     .Input("dy: T")
+//     .Input("dy_: T")
+//     .Input("x: T")
+//     .Output("output: T");
 
 // OpKernel definition.
 // template parameter <FPTYPE> is the datatype of the tensors.
@@ -188,8 +188,8 @@ REGISTER_KERNEL_BUILDER(                                                \
 REGISTER_KERNEL_BUILDER(                                                \
     Name("GeluGradGrad").Device(DEVICE_CPU).TypeConstraint<T>("T"),     \
     GeluGradGradOp<CPUDevice, T>);                                      
-REGISTER_CPU(float);
-REGISTER_CPU(double);
+// REGISTER_CPU(float);
+// REGISTER_CPU(double);
 
 #if GOOGLE_CUDA || TENSORFLOW_USE_ROCM
 #define REGISTER_GPU(T)                                                 \
@@ -202,6 +202,6 @@ REGISTER_KERNEL_BUILDER(                                                \
 REGISTER_KERNEL_BUILDER(                                                \
     Name("GeluGradGrad").Device(DEVICE_GPU).TypeConstraint<T>("T"),     \
     GeluGradGradOp<GPUDevice, T>);                                      
-REGISTER_GPU(float);
-REGISTER_GPU(double);
+// REGISTER_GPU(float);
+// REGISTER_GPU(double);
 #endif // GOOGLE_CUDA || TENSORFLOW_USE_ROCM
